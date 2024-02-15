@@ -20,6 +20,23 @@
   "globalVariables": {
   },
   "modes": {
+    "window": {
+      "title": "Interlok Documentation V5",
+      "width": 1024,
+      "height": 768,
+      "minWidth": 1024,
+      "minHeight": 768,
+      "center": true,
+      "fullScreen": false,
+      "alwaysOnTop": false,
+      "icon": "/resources/icons/appIcon.png",
+      "enableInspector": false,
+      "borderless": false,
+      "maximize": false,
+      "hidden": false,
+      "resizable": true,
+      "exitProcessOnClose": false
+    },
     "browser": {
       "globalVariables": {
       },
