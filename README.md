@@ -8,23 +8,25 @@ To build the project the offline documentation you need to install Neutralino.js
 
 ## Installing neu CLI
 
-```bash
+```sh
 npm install -g @neutralinojs/neu
 ```
 
 ## Creating a new app
 
-```bash
+```sh
 neu create myapp
 ```
 
 Run your application
 
-```bash
+```sh
 cd myapp
 neu run
 ```
 
 ## Building your application
 
+```sh
 neu build --release
+```
