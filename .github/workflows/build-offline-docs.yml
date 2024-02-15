@@ -32,19 +32,16 @@ jobs:
       run: |
         cp -a interlok-docs/docs/. ./resources
         ./download-js-scripts.sh
+    - name: Build Offline Docs
+      run: |
+        neu build --release
     - name: Upload Optional Components Files
       # interlok-bom.xml: For maven or gradle dependencies
       # interlok-optional-component.json: For the component search
       # optional-components.list: For the command line installer 
       uses: actions/upload-artifact@v4
       with:
-        name: optional-components-files
+        name: interlok-docs-offline
         path: |
-            ./build/interlok-bom.xml
-            ./build/interlok-optional-component.json
-            ./build/optional-components.list
+            ./dist/interlok-docs-offline.zip
         retention-days: 7
-    - name: Notify Teams About Failure and Recovery
-      uses: interlok-tooling/notify-teams@v1
-      with:
-        teams-webhook-url: ${{ secrets.TEAMS_IDN_WH_URL }}
