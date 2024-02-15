@@ -34,6 +34,7 @@ jobs:
         ./download-js-scripts.sh
     - name: Build Offline Docs
       run: |
+        neu update
         neu build --release
     - name: Upload Optional Components Files
       # interlok-bom.xml: For maven or gradle dependencies
@@ -43,5 +44,5 @@ jobs:
       with:
         name: interlok-docs-offline
         path: |
-            ./dist/interlok-docs-offline.zip
+            ./dist/interlok-docs-offline-release.zip
         retention-days: 7

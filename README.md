@@ -12,13 +12,13 @@ To build the project the offline documentation you need to install Neutralino.js
 npm install -g @neutralinojs/neu
 ```
 
-## Creating a new app
+## Download neutralinojs binary files
 
 ```sh
-neu create myapp
+neu update
 ```
 
-Run your application
+## Run your application
 
 ```sh
 cd myapp

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Copy docs dir to resources dir"
-cp -a ../docs/. ./resources
 filename=resources/index.html
 jsDir=js
 scriptDestDir=resources/$jsDir
