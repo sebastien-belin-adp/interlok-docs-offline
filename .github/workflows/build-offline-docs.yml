@@ -1,0 +1,51 @@
+name: Build Index
+
+on:
+  workflow_dispatch:
+    inputs:
+      interlok-version:
+        description: 'Interlok Version'
+        type: string
+        required: true
+
+permissions: read-all
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      INTERLOK_VERSION: ${{ github.event.inputs.interlok-version }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        repository: adaptris/interlok-docs
+        ref: master
+        path: interlok-docs
+        token: ${{ secrets.GH_READONLY_PAT }}
+    - name: Install Neutralino.js
+      run: |
+        npm install -g @neutralinojs/neu
+    - name: Copy Docs To Resources
+      run: |
+        cp -a interlok-docs/docs/. ./resources
+        ./download-js-scripts.sh
+    - name: Upload Optional Components Files
+      # interlok-bom.xml: For maven or gradle dependencies
+      # interlok-optional-component.json: For the component search
+      # optional-components.list: For the command line installer 
+      uses: actions/upload-artifact@v4
+      with:
+        name: optional-components-files
+        path: |
+            ./build/interlok-bom.xml
+            ./build/interlok-optional-component.json
+            ./build/optional-components.list
+        retention-days: 7
+    - name: Notify Teams About Failure and Recovery
+      uses: interlok-tooling/notify-teams@v1
+      with:
+        teams-webhook-url: ${{ secrets.TEAMS_IDN_WH_URL }}
