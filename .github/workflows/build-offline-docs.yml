@@ -42,7 +42,6 @@ jobs:
       # optional-components.list: For the command line installer 
       uses: actions/upload-artifact@v4
       with:
-        name: interlok-docs-offline
-        path: |
-            ./dist/interlok-docs-offline-release.zip
+        path: /dist/interlok-docs-offline-release.zip
+        if-no-files-found: error
         retention-days: 7
