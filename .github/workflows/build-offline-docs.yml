@@ -25,7 +25,6 @@ jobs:
         repository: adaptris/interlok-docs
         ref: master
         path: interlok-docs
-        token: ${{ secrets.GH_READONLY_PAT }}
     - name: Install Neutralino.js
       run: |
         npm install -g @neutralinojs/neu
